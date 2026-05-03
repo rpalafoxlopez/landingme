@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Rafael PALAFOX // PRINCIPAL ENGINEER</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed-variant": "#003ab3",
+              "on-tertiary": "#313030",
+              "on-background": "#e3e2e2",
+              "on-tertiary-fixed-variant": "#474646",
+              tertiary: "#f0ecec",
+              "on-primary": "#00363d",
+              "on-tertiary-fixed": "#1c1b1b",
+              "surface-container-highest": "#343535",
+              "surface-container": "#1f2020",
+              "on-primary-fixed": "#001f24",
+              "secondary-fixed-dim": "#b6c4ff",
+              "primary-fixed-dim": "#00daf3",
+              "error-container": "#93000a",
+              secondary: "#b6c4ff",
+              "on-surface-variant": "#bac9cc",
+              "tertiary-fixed-dim": "#c9c6c5",
+              "inverse-primary": "#006875",
+              "on-error": "#690005",
+              "surface-container-lowest": "#0d0e0f",
+              surface: "#121414",
+              "tertiary-fixed": "#e5e2e1",
+              "inverse-on-surface": "#303031",
+              background: "#121414",
+              outline: "#849396",
+              "surface-container-high": "#292a2a",
+              "inverse-surface": "#e3e2e2",
+              "on-surface": "#e3e2e2",
+              "secondary-container": "#0050ee",
+              "surface-tint": "#00daf3",
+              "on-primary-container": "#00626e",
+              "on-secondary-container": "#d4dbff",
+              "primary-container": "#00e5ff",
+              "tertiary-container": "#d3d0cf",
+              "on-secondary-fixed": "#001550",
+              error: "#ffb4ab",
+              "outline-variant": "#3b494c",
+              "surface-container-low": "#1b1c1c",
+              "on-error-container": "#ffdad6",
+              "primary-fixed": "#9cf0ff",
+              primary: "#c3f5ff",
+              "surface-bright": "#383939",
+              "secondary-fixed": "#dce1ff",
+              "on-secondary": "#002780",
+              "surface-dim": "#121414",
+              "surface-variant": "#343535",
+              "on-tertiary-container": "#5a5959",
+              "on-primary-fixed-variant": "#004f58",
+            },
+            borderRadius: {
+              DEFAULT: "0px",
+              lg: "0px",
+              xl: "0px",
+              full: "9999px",
+            },
+            spacing: {
+              xs: "4px",
+              lg: "24px",
+              md: "16px",
+              unit: "4px",
+              xl: "48px",
+              "container-max": "1200px",
+              gutter: "24px",
+              sm: "8px",
+            },
+            fontFamily: {
+              "code-sm": ["JetBrains Mono"],
+              "headline-md": ["Inter"],
+              "display-lg": ["Inter"],
+              "body-base": ["Inter"],
+              "label-caps": ["JetBrains Mono"],
+            },
+            fontSize: {
+              "code-sm": [
+                "14px",
+                { lineHeight: "1.5", letterSpacing: "0", fontWeight: "450" },
+              ],
+              "headline-md": [
+                "24px",
+                {
+                  lineHeight: "1.3",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "display-lg": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-base": [
+                "16px",
+                { lineHeight: "1.6", letterSpacing: "0", fontWeight: "400" },
+              ],
+              "label-caps": [
+                "12px",
+                { lineHeight: "1", letterSpacing: "0.1em", fontWeight: "600" },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Base styles and custom utilities (kept minimal) */
+      body {
+        background-color: #0a0a0a;
+        color: #e3e2e2;
+      }
+      .grid-bg {
+        background-image:
+          linear-gradient(#1a1a1a 1px, transparent 1px),
+          linear-gradient(90deg, #1a1a1a 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+      .cyan-glow { 
+          box-shadow: 0 0 20px rgba(255, 45, 32, 0.15);
+      }
+      .cyan_q-glow {
+        box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+      }
+      .hover-cyan-glow:hover {
+        box-shadow: 0 0 25px rgba(0, 229, 255, 0.25);
+      }
+      /* Ensure full section separation for modular hosting */
+      .section-module {
+        scroll-margin-top: 80px;
+      }
+    </style>
+  </head>
+  <body
+    class="font-body-base antialiased selection:bg-primary-container selection:text-on-primary-container"
+  >
+    <!-- ==================== TOP APP BAR (MODULE) ==================== -->
+    <header
+      class="fixed top-0 w-full z-50 border-b border-[#1f1f1f] bg-[#0a0a0a]/90 backdrop-blur-md"
+    >
+      <div
+        class="max-w-[1200px] mx-auto flex justify-between items-center px-6 py-4"
+      >
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary-container"
+            >terminal</span
+          >
+          <span
+            class="text-xl font-mono font-black text-primary-container tracking-widest"
+            >RPALAFOX</span
+          >
+        </div>
+        <nav class="hidden md:flex items-center gap-8">
+          <a
+            class="font-mono text-sm uppercase text-primary-container border-b-2 border-primary-container pb-1"
+            href="#experience"
+            >EXPERIENCE</a
+          >
+          <a
+            class="font-mono text-sm uppercase text-gray-500 hover:text-gray-300 transition-colors"
+            href="#services"
+            >SERVICES</a
+          >
+          <a
+            class="font-mono text-sm uppercase text-gray-500 hover:text-gray-300 transition-colors"
+            href="#tech-stack"
+            >TECH_STACK</a
+          >
+          <a
+            class="font-mono text-sm uppercase text-gray-500 hover:text-gray-300 transition-colors"
+            href="#portfolio"
+            >PORTFOLIO</a
+          >
+        </nav>
+        <button
+          class="px-4 py-2 bg-transparent border border-primary-container text-primary-container font-mono text-xs uppercase tracking-widest hover:bg-primary-container/10 transition-all active:scale-95 duration-100"
+          onclick="window.location.href='mailto:rpalafox@hey.com'"
+        >
+          _CONNECT
+        </button>
+      </div>
+    </header>
+
+    <main class="pt-24 min-h-screen">
+      <!-- ==================== HERO SECTION (MODULE) ==================== -->
+      <section id="hero" class="relative px-6 py-16 md:py-32 overflow-hidden section-module">
+        <h1
+          class="font-display-lg text-display-lg md:text-7xl mb-8 max-w-4xl text-on-surface"
+        >
+          Rafael Palafox ·
+          <span class="text-primary-container">Arquitectura técnica</span> para
+          la innovación editorial.
+        </h1>
+        <p
+          class="font-body-base text-xl md:text-2xl text-on-surface-variant max-w-3xl mb-12"
+        >
+          Diseño y lidero infraestructuras digitales robustas utilizando el
+          ecosistema <strong>Laravel</strong>. Especialista en convertir
+          sistemas complejos en plataformas de alto tráfico y rendimiento
+          crítico.
+        </p>
+
+        <!-- JSON SNIPPET: Datos académicos y técnicos -->
+        <div class="p-6 font-code-sm text-primary-fixed-dim">
+          <pre><code>{
+  <span class="text-secondary-fixed-dim">"nombre"</span>: <span class="text-primary-container">"Rafael Palafox López"</span>,
+  <span class="text-secondary-fixed-dim">"rol"</span>: <span class="text-primary-container">"Principal Engineer"</span>,
+  <span class="text-secondary-fixed-dim">"especialidad"</span>: <span class="text-tertiary">"Backend Architecture & Laravel Ecosystem"</span>,
+  <span class="text-secondary-fixed-dim">"educacion"</span>: {
+    <span class="text-secondary-fixed-dim">"titulo"</span>: <span class="text-tertiary">"Ingeniería en Informática"</span>,
+    <span class="text-secondary-fixed-dim">"institucion"</span>: <span class="text-tertiary">"Universidad Politécnica de Puebla (UPPue)"</span>
+  }
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- ==================== SERVICES GRID (MODULE) ==================== -->
+      <section id="services" class="bg-[#0f0f0f] border-y border-[#1f1f1f] py-24 px-6 section-module">
+        <div class="max-w-[1200px] mx-auto">
+          <div class="mb-16">
+            <span class="font-label-caps text-primary-container"
+              >CORE_SERVICES</span
+            >
+            <h2 class="font-headline-md text-3xl mt-2 text-on-surface">
+              Especialización de Alto Nivel
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+              class="p-8 bg-[#121212] border border-[#1f1f1f] hover:border-primary-container transition-colors group"
+            >
+              <span
+                class="material-symbols-outlined text-4xl text-primary-container mb-6 block group-hover:scale-110 transition-transform"
+                >architecture</span
+              >
+              <h3 class="font-headline-md text-xl mb-4 text-on-surface">
+                Liderazgo Técnico &amp; Arquitectura
+              </h3>
+              <p class="text-on-surface-variant font-body-base leading-relaxed">
+                Diseño de sistemas distribuidos, microservicios y dirección de
+                equipos para productos digitales de escala global con foco en
+                mantenibilidad.
+              </p>
+            </div>
+            <div
+              class="p-8 bg-[#121212] border border-[#1f1f1f] hover:border-primary-container transition-colors group"
+            >
+              <span
+                class="material-symbols-outlined text-4xl text-primary-container mb-6 block group-hover:scale-110 transition-transform"
+                >code</span
+              >
+              <h3 class="font-headline-md text-xl mb-4 text-on-surface">
+                Desarrollo Full-Stack
+              </h3>
+              <p class="text-on-surface-variant font-body-base leading-relaxed">
+                Implementación de extremo a extremo con JavaScript moderno
+                (React, Node.js, TypeScript) y un enfoque obsesivo en la
+                performance y la mantenibilidad.
+              </p>
+            </div>
+            <div
+              class="p-8 bg-[#121212] border border-[#1f1f1f] hover:border-primary-container transition-colors group"
+            >
+              <span
+                class="material-symbols-outlined text-4xl text-primary-container mb-6 block group-hover:scale-110 transition-transform"
+                >memory</span
+              >
+              <h3 class="font-headline-md text-xl mb-4 text-on-surface">
+                Consultoría Estratégica
+              </h3>
+              <p class="text-on-surface-variant font-body-base leading-relaxed">
+                Auditoría técnica, optimización de flujos de trabajo editoriales
+                y transformación digital para la era post-digital.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TECH STACK & EXPERIENCE (MODULE) ==================== -->
+      <section id="tech-stack" class="py-24 px-6 section-module">
+        <div
+          class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20"
+        >
+          <!-- Experience Column -->
+          <div id="experience">
+            <div class="mb-12">
+              <span class="font-label-caps text-primary-container"
+                >CHRONOLOGY</span
+              >
+              <h2 class="font-headline-md text-3xl mt-2 text-on-surface">
+                Trayectoria Profesional
+              </h2>
+            </div>
+            <div class="space-y-12">
+              <div class="relative pl-8 border-l border-[#1f1f1f]">
+                <div
+                  class="absolute -left-[5px] top-0 w-2 h-2 bg-primary-container"
+                ></div>
+                <span class="font-mono text-xs text-primary-container"
+                  >2022 — ACTUALIDAD</span
+                >
+                <h4 class="font-headline-md text-xl text-on-surface mt-2">
+                  Principal Engineer · Freelance
+                </h4>
+                <p class="text-on-surface-variant mt-2 font-body-base">
+                  Arquitectura y desarrollo de plataformas editoriales de alto
+                  rendimiento. Implementación de headless CMS y optimización de
+                  Core Web Vitals para medios digitales.
+                </p>
+              </div>
+              <div class="relative pl-8 border-l border-[#1f1f1f]">
+                <div
+                  class="absolute -left-[5px] top-0 w-2 h-2 bg-gray-600"
+                ></div>
+                <span class="font-mono text-xs text-gray-500">2019 — 2022</span>
+                <h4 class="font-headline-md text-xl text-on-surface mt-2">
+                  Senior Full-Stack Developer · Agencia Digital
+                </h4>
+                <p class="text-on-surface-variant mt-2 font-body-base">
+                  Liderazgo técnico en proyectos de e-commerce y logística.
+                  Implementación de arquitecturas basadas en micro-frontends y
+                  optimización de bases de datos.
+                </p>
+              </div>
+              <div class="relative pl-8 border-l border-[#1f1f1f]">
+                <div
+                  class="absolute -left-[5px] top-0 w-2 h-2 bg-gray-600"
+                ></div>
+                <span class="font-mono text-xs text-gray-500">2017 — 2019</span>
+                <h4 class="font-headline-md text-xl text-on-surface mt-2">
+                  Frontend Developer · Startup Tech
+                </h4>
+                <p class="text-on-surface-variant mt-2 font-body-base">
+                  Desarrollo de aplicaciones web responsivas y progresivas
+                  (PWA). Colaboración en equipos ágiles para la entrega continua
+                  de funcionalidades.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ecosystem Column (Tech Stack) -->
+          <div>
+            <div class="mb-12">
+              <span class="font-label-caps text-primary-container"
+                >TECH_STACK</span
+              >
+              <h2 class="font-headline-md text-3xl mt-2 text-on-surface">
+                Ecosistema Técnico
+              </h2>
+            </div>
+            <div class="space-y-6">
+              <div class="space-y-2">
+                <div class="flex justify-between font-mono text-xs">
+                  <span>PHP 8.x / Laravel Ecosystem</span>
+                  <span>98%</span>
+                </div>
+                <div class="w-full h-1 bg-[#1f1f1f]">
+                  <div class="bg-primary-container h-full w-[98%]"></div>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <div class="flex justify-between font-mono text-xs">
+                  <span>MySQL / PostgreSQL / Redis</span>
+                  <span>92%</span>
+                </div>
+                <div class="w-full h-1 bg-[#1f1f1f]">
+                  <div class="bg-primary-container h-full w-[92%]"></div>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <div class="flex justify-between font-mono text-xs">
+                  <span>Inertia.js / Livewire / Tailwind</span>
+                  <span>90%</span>
+                </div>
+                <div class="w-full h-1 bg-[#1f1f1f]">
+                  <div class="bg-primary-container h-full w-[90%]"></div>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <div class="flex justify-between font-mono text-xs">
+                  <span>Docker / AWS / CI/CD</span>
+                  <span>85%</span>
+                </div>
+                <div class="w-full h-1 bg-[#1f1f1f]">
+                  <div class="bg-primary-container h-full w-[85%]"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Additional info from CV -->
+            <div class="mt-12 p-6 bg-[#121212] border border-[#1f1f1f]">
+              <span class="font-label-caps text-primary-container block mb-2"
+                >+ DATOS</span
+              >
+              <p class="text-on-surface-variant text-sm font-mono">
+                Ingeniero en Sistemas Digitales · ITESM<br />Disponibilidad
+                inmediata · Remoto / CDMX
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== BENTO PORTFOLIO (MODULE) ==================== -->
+      <section id="portfolio" class="bg-[#0f0f0f] border-y border-[#1f1f1f] py-24 px-6 section-module">
+        <div class="max-w-[1200px] mx-auto">
+          <div class="mb-16">
+            <span class="font-label-caps text-primary-container"
+              >PORTFOLIO</span
+            >
+            <h2 class="font-headline-md text-3xl mt-2 text-on-surface">
+              Casos de Estudio
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <div
+              class="md:col-span-8 group relative overflow-hidden bg-[#121212] border border-[#1f1f1f]"
+            >
+              <div
+                class="w-full h-[400px] bg-gradient-to-br from-[#0a2a2a] to-[#0a0a0a] flex items-center justify-center"
+              >
+                <span
+                  class="material-symbols-outlined text-7xl text-primary-container opacity-40"
+                  >article</span
+                >
+              </div>
+              <div
+                class="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-[#0a0a0a] to-transparent"
+              >
+                <span
+                  class="font-mono text-xs text-primary-container mb-2 uppercase tracking-widest"
+                  >Editorial Digital</span
+                >
+                <h3 class="font-display-lg text-3xl mb-4 text-on-surface">
+                  Headless CMS para medio informativo
+                </h3>
+                <p class="text-on-surface-variant max-w-xl">
+                  Migración de WordPress a arquitectura basada en Next.js +
+                  Sanio. Reducción del 70% en tiempo de carga y mejora en SEO.
+                </p>
+              </div>
+            </div>
+            <div
+              class="md:col-span-4 group relative overflow-hidden bg-[#121212] border border-[#1f1f1f]"
+            >
+              <div
+                class="w-full h-[400px] bg-gradient-to-br from-[#1a1a2a] to-[#0a0a0a] flex items-center justify-center"
+              >
+                <span
+                  class="material-symbols-outlined text-7xl text-primary-container opacity-40"
+                  >inventory_2</span
+                >
+              </div>
+              <div
+                class="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-[#0a0a0a] to-transparent"
+              >
+                <span
+                  class="font-mono text-xs text-primary-container mb-2 uppercase tracking-widest"
+                  >Logística</span
+                >
+                <h3 class="font-display-lg text-3xl mb-4 text-on-surface">
+                  Sistema de gestión de inventarios
+                </h3>
+                <p class="text-on-surface-variant">
+                  Dashboard en tiempo real con sincronización de múltiples
+                  almacenes usando WebSockets.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== CTA SECTION (MODULE) ==================== -->
+      <section class="py-32 px-6 relative overflow-hidden section-module">
+        <div class="absolute inset-0 grid-bg opacity-10"></div>
+        <div class="max-w-[1200px] mx-auto text-center relative z-10">
+          <h2
+            class="font-display-lg text-4xl md:text-6xl mb-12 text-on-surface"
+          >
+            "Construyamos algo robusto juntos."
+          </h2>
+          <div class="flex flex-col sm:flex-row justify-center gap-6">
+            <button
+              class="px-10 py-5 bg-primary-container text-black font-mono font-bold uppercase tracking-widest hover-cyan-glow transition-all active:scale-95"
+              onclick="window.location.href='mailto:rpalafox@hey.com'"
+            >
+              rpalafox@hey.com
+            </button>
+            <button
+              class="px-10 py-5 bg-transparent border border-primary-container text-primary-container font-mono font-bold uppercase tracking-widest hover:bg-primary-container/10 transition-all active:scale-95"
+              onclick="alert('Agendar llamada: pronto disponible en calendly.com/rpalafox')"
+            >
+              Agendar llamada
+            </button>
+          </div>
+          <p class="mt-8 text-on-surface-variant font-mono text-sm">
+            respuesta en menos de 24 horas · disponibilidad para proyectos de
+            larga duración
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== FOOTER (MODULE) ==================== -->
+    <footer class="bg-[#0a0a0a] border-t border-[#1f1f1f] py-8">
+      <div
+        class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center px-6 gap-6"
+      >
+        <span class="font-mono text-[10px] tracking-widest text-gray-400"
+          >© 2025 Rafael PALAFOX // PRINCIPAL ENGINEER</span
+        >
+        <div class="flex gap-8">
+          <a
+            class="font-mono text-[10px] tracking-widest text-gray-600 hover:text-primary-container underline underline-offset-4 transition-all duration-300"
+            href="https://github.com/rpalafox"
+            target="_blank"
+            >GITHUB</a
+          >
+          <a
+            class="font-mono text-[10px] tracking-widest text-gray-600 hover:text-primary-container underline underline-offset-4 transition-all duration-300"
+            href="https://linkedin.com/in/rpalafox"
+            target="_blank"
+            >LINKEDIN</a
+          >
+          <a
+            class="font-mono text-[10px] tracking-widest text-gray-600 hover:text-primary-container underline underline-offset-4 transition-all duration-300"
+            href="#"
+            >RESUME.PDF</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Drawer (simplified) hidden by default but ready -->
+    <div
+      class="fixed left-0 top-0 h-full z-[60] bg-[#0a0a0a] border-r border-[#1f1f1f] w-64 -translate-x-full md:hidden transition-transform duration-300"
+      id="mobileDrawer"
+    >
+      <div class="p-6 border-b border-[#1f1f1f]">
+        <span
+          class="text-primary-container font-bold font-mono text-sm uppercase"
+          >SYSTEM_MENU</span
+        >
+      </div>
+      <nav class="flex flex-col">
+        <a
+          class="bg-primary-container text-black font-bold flex items-center px-4 py-3 font-mono text-sm uppercase"
+          href="#experience"
+          onclick="document.getElementById('mobileDrawer').classList.add('-translate-x-full')"
+        >
+          <span class="material-symbols-outlined mr-3">history</span> EXPERIENCE
+        </a>
+        <a
+          class="text-gray-400 flex items-center px-4 py-3 font-mono text-sm uppercase hover:bg-[#121212] hover:text-cyan-300 transition-colors"
+          href="#services"
+          onclick="document.getElementById('mobileDrawer').classList.add('-translate-x-full')"
+        >
+          <span class="material-symbols-outlined mr-3">architecture</span>
+          SERVICES
+        </a>
+        <a
+          class="text-gray-400 flex items-center px-4 py-3 font-mono text-sm uppercase hover:bg-[#121212] hover:text-cyan-300 transition-colors"
+          href="#tech-stack"
+          onclick="document.getElementById('mobileDrawer').classList.add('-translate-x-full')"
+        >
+          <span class="material-symbols-outlined mr-3">memory</span> TECH_STACK
+        </a>
+        <a
+          class="text-gray-400 flex items-center px-4 py-3 font-mono text-sm uppercase hover:bg-[#121212] hover:text-cyan-300 transition-colors"
+          href="#portfolio"
+          onclick="document.getElementById('mobileDrawer').classList.add('-translate-x-full')"
+        >
+          <span class="material-symbols-outlined mr-3">code</span> PORTFOLIO
+        </a>
+      </nav>
+    </div>
+    <button
+      id="menuButton"
+      class="fixed bottom-6 right-6 z-50 md:hidden bg-primary-container text-black p-3 rounded-full shadow-lg"
+      onclick="document.getElementById('mobileDrawer').classList.toggle('-translate-x-full')"
+    >
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+
+    <script>
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            e.preventDefault();
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+      // Simple close drawer on outside click? (optional)
+      document.addEventListener('click', function(event) {
+        const drawer = document.getElementById('mobileDrawer');
+        const menuBtn = document.getElementById('menuButton');
+        if (drawer && !drawer.classList.contains('-translate-x-full')) {
+          if (!drawer.contains(event.target) && !menuBtn.contains(event.target)) {
+            drawer.classList.add('-translate-x-full');
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
